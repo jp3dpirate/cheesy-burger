@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #111111;
+  color: #f5f3ee;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible keyboard focus (accessibility floor) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #ffc107;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@layer components {
+  .glass {
+    background: rgba(27, 27, 27, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-cheese {
+    background: rgba(255, 193, 7, 0.1);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 193, 7, 0.35);
+  }
+
+  .eyebrow {
+    @apply font-display text-xs uppercase tracking-[0.25em] text-cheese font-semibold;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-cheese px-7 py-3.5 font-display font-semibold text-ink transition-all duration-300 hover:bg-cheese-light hover:shadow-glow active:scale-95;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-3.5 font-display font-semibold text-cream backdrop-blur transition-all duration-300 hover:border-cheese hover:text-cheese active:scale-95;
+  }
+
+  .card {
+    @apply rounded-2xl bg-char border border-white/5 shadow-card transition-all duration-300;
+  }
+
+  .reveal {
+    @apply opacity-0;
+  }
+
+  .reveal.is-visible {
+    animation: rise 0.7s ease-out forwards;
+  }
+}
+
+/* ---- Signature element: the "melted-cheese drip" section divider ---- *
+ * A wavy line with hanging drips, styled like cheese melting off a burger.
+ * Used between major sections instead of a plain straight border. */
+.drip-divider {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 46px;
+  color: #ffc107;
+}
+
+.drip-divider svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.drip-divider .drop {
+  animation: drip 2.4s ease-in-out infinite;
+}
+
+.drip-divider .drop:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.drip-divider .drop:nth-child(3) {
+  animation-delay: 0.8s;
+}
+.drip-divider .drop:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.drip-divider .drop:nth-child(5) {
+  animation-delay: 1.1s;
+}
+
+/* Marquee track used for the best-sellers ticker */
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
